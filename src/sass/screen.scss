@@ -1,0 +1,324 @@
+@import "base";
+
+body {
+	font-family:		$fontStack;
+	font-size:			.8em;
+	border:				none;
+	margin:				0;
+	padding:			0;
+}
+
+pre {
+	font-size:			1.5em;
+}
+
+h1, h2, h3, h4 {
+	font-weight:		normal;
+}
+
+.logo {
+   float:				left;
+   width:				100px;
+   height:				75px;
+   border:				none;
+}
+
+a {
+	color:				#0000FF;
+	text-decoration:	none;
+	
+	&:active {
+		background-color:	#cccccc;
+	}
+	
+	&:hover {
+		background-color:	#cccccc;
+	}
+}
+
+/* this is the header style definitions */
+#header {
+	position:			fixed;
+	top:				0px;
+	left:				0;
+	right:				0;
+	height:				3.6em;
+	border:				none;
+	z-index:			5;
+	background:			#ffffff;
+}
+
+#systemname {
+	font-size:			1em;
+}
+
+#screenname, #username, #projectname {
+	font-size:			0.8em;
+}
+
+/* this is the menu style definitions */
+#menu {
+	position:			fixed;
+	top:				85px;
+	left:				0;
+	border:				none;
+	z-index:			5;
+}
+
+/* common styling */
+.menu {
+	font-family:		$fontStack;
+	width:				100px;
+	height:				200px;
+	position:			absolute;
+	font-size:			12px;
+}
+
+.menu ul li a, .menu ul li a:visited {
+	display:			block;
+	text-decoration:	none;
+	color:				#000;
+	width:				100px;
+	text-align:			center;
+	border:				1px solid #fff;
+	border-width:		1px 1px 0 0;
+	background:			#9999ff;
+	line-height:		19px;
+	font-size:			12px;
+}
+.menu ul {
+	list-style-type:	none;
+}
+
+.menu ul li {
+	float:				left;
+	margin-right:		1px;
+	position:			relative;
+}
+
+.menu ul li ul {
+	display:			none;
+}
+
+/* specific to non IE browsers */
+.menu ul li:hover a {
+	color:				#fff;
+	background:			#6666ff;
+}
+	
+.menu ul li:hover ul {
+	display:			block;
+	position:			absolute;
+	top:				0;
+	left:				101px;
+	width:				100px;
+}
+
+.menu ul li:hover ul li a.hide {
+	background:			#6666ff;
+	color:				#000;
+}
+
+.menu ul li:hover ul li:hover a.hide {
+	width:				100px;
+}
+
+.menu ul li:hover ul li ul {
+	display:			none;
+}
+
+.menu ul li:hover ul li a {
+	display:			block;
+	background:			#6666ff;
+	color:				#000;
+	width:				100px;
+}
+.menu ul li:hover ul li a:hover {
+	background:			#3333ff;
+	color:				#ffffff;
+}
+
+.menu ul li:hover ul li:hover ul {
+	display:			block;
+	position:			absolute;
+	left:				101px;
+	top:				0;
+	color:				#000;
+}
+
+.menu ul li:hover ul li:hover ul li a {
+	display:			block;
+	width:				200px;
+	background:			#3333ff;
+	color:				#ffffff;
+}
+
+.evenRow {
+}
+
+.oddRow {
+}
+
+.menu ul li:hover ul li:hover ul li a:hover {
+	background:			#3333ff;
+	color:				#ffffff;
+}
+
+#body {
+	position:			relative;
+	top:				4em;
+	left:				105px;
+	margin-right:		105px;
+}
+
+.roleWindow {
+	border-right:		3px inset;
+	border-bottom:		3px outset;
+	margin-right:		220px;
+	margin-bottom:		10px;
+}
+
+h1.roleWindow {
+	font-size:			1.2em;
+}
+
+#myAlerts {
+	float:				right;
+	width:				200px;
+	border-right:		3px inset;
+	border-bottom:		3px outset;
+	margin-right:		10px;
+	margin-bottom:		10px;
+}
+
+h1.myAlert {
+	font-size:			1.2em;
+}
+
+.print_only {
+	visibility:			hidden;
+}
+
+.componentTitle {
+	clear:				both;
+	width:				40em;
+}
+
+.componentDescription {
+	float:				left;
+	border-bottom:		1px outset;
+	width:				50em;
+}
+
+.componentStatus {
+	float:				right;
+	color:				#00FFFF;
+}
+	
+.componentButtons {
+	float:				right;
+}
+
+.componentAttributes {
+	clear:				both;
+}
+
+ul {
+	padding:			0px;
+	margin:				0px 0px 10px 10px;
+}
+	
+li {
+	list-style:			none;
+	margin-right:		10px;
+}
+
+.fancyItem {
+	margin-left:		2em;
+}
+
+.borderless {
+	border:				none;
+}
+
+.hidden {
+	top:				-9999px;
+	position:			absolute;
+}
+
+.pending {
+	background-color:	#cccccc;
+}
+
+.floatLeft {
+	float:				left;
+}
+
+.floatRight {
+	float:				right;
+}
+
+.clearFloat {
+	clear:				both;
+}
+
+.dirty {
+	font-style:			italic;
+	background-color:	#ccffff;
+}
+
+.deleted {
+	color:				#ff0000;
+}
+
+.defaultbuttonclass {
+	width:				10em;
+}
+
+.closeButton {
+	width:				10em;
+}
+
+.blue {
+	color: 				blue;
+}
+
+.blueBackground {
+	background-color:	#CCCCFF;
+}
+
+.red {
+	color: 				red;
+}
+
+.yellow {
+	color: 				#FF9933;
+}
+
+.bolder {
+	font-weight: 		bold;
+}
+
+.twoColumnContainer {
+	margin: 0 auto;
+}
+
+.leftColumn {
+	float: left;
+	width: 48%;
+}
+
+.rightColumn {
+	float: right;
+	width: 48%;
+}
+
+.shoppingCart {
+	position:			fixed;
+	top:				0px;
+	right:				0;
+	height:				3.6em;
+	border:				none;
+	z-index:			5000;
+	background:			#ffffff;
+}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 
-import Logo from './components/Logo';
+import Header from './components/Header';
 import Menu from './components/Menu';
 import Attribution from './components/Attribution';
 
@@ -9,7 +9,7 @@ class App extends Component {
   render() {
     return (
       <div className='App-leftMenu'>
-        <Logo />
+        <Header />
         <Menu />
         <Attribution />
       </div>
