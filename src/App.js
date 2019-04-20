@@ -8,10 +8,12 @@ import Attribution from './components/Attribution';
 class App extends Component {
   render() {
     return (
-      <div className='App-leftMenu'>
+      <div>
         <Header />
-        <Menu />
-        <Attribution />
+        <div className='App-leftMenu'>
+          <Menu />
+          <Attribution width='200' />
+        </div>
       </div>
     );
   }
