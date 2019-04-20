@@ -3,9 +3,8 @@
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+  width: 200px;
+  height: auto;
 }
 
 .App-header {
@@ -23,11 +22,10 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App-leftMenu {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  left: 0;
+  top: 0;
 }
