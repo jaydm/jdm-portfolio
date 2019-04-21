@@ -10,9 +10,14 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <div className='App-leftMenu'>
-          <Menu />
-          <Attribution width='200' />
+        <div id='body'>
+          <div className='leftColumn'>
+            <Menu />
+            <Attribution />
+          </div>
+          <div id='substance'>
+            <h1>This is the main area</h1>
+          </div>
         </div>
       </div>
     );

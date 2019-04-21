@@ -3,12 +3,10 @@ import React from 'react';
 function Menu() {
   return (
     <div id="menu">
-      <ul className='menu'>
-        <li className='menu'>About Me</li>
-        <li className='menu'>React Component Gallery</li>
-        <li className='menu'>Portfolio</li>
-        <li className='menu'>Contact Me</li>
-      </ul>
+      <button className='menuButton'>About Me</button>
+      <button className='menuButton'>React Component Gallery</button>
+      <button className='menuButton'>Portfolio</button>
+      <button className='menuButton'>Contact Me</button>
     </div>
   );
 }
