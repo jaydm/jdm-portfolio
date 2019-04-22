@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import './App.scss';
 
 import Header from './components/site/Header';
@@ -7,6 +8,7 @@ import Attribution from './components/site/Attribution';
 
 import DynamicComponent from './components/gallery/dynamicComponent/DynamicComponent'
 import dataFormat from './components/gallery/dynamicComponent/dataFormat'
+import JSONPlayground from './components/gallery/dynamicComponent/JSONPlayground';
 
 class App extends Component {
   render() {
@@ -19,6 +21,7 @@ class App extends Component {
             <Attribution />
           </div>
           <div id='substance'>
+            <JSONPlayground name='example' json={JSON.stringify(dataFormat)} />
             <DynamicComponent dataFormat={dataFormat} />
           </div>
         </div>

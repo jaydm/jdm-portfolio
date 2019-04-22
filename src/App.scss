@@ -77,8 +77,8 @@ a {
 }
 
 #substance {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
 }
 
 #attribution {
@@ -86,8 +86,4 @@ a {
   flex-direction: column;
   width: 100%;
   justify-content: flex-end;
-}
-
-button .twistie {
-  width: 5em;
 }
