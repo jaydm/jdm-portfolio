@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import './App.scss';
 
-import Header from './components/Header';
-import Menu from './components/Menu';
-import Attribution from './components/Attribution';
+import Header from './components/site/Header';
+import Menu from './components/site/Menu';
+import Attribution from './components/site/Attribution';
+
+import DynamicComponent from './components/gallery/dynamicComponent/DynamicComponent'
+import dataFormat from './components/gallery/dynamicComponent/dataFormat'
 
 class App extends Component {
   render() {
@@ -16,7 +19,7 @@ class App extends Component {
             <Attribution />
           </div>
           <div id='substance'>
-            <h1>This is the main area</h1>
+            <DynamicComponent dataFormat={dataFormat} />
           </div>
         </div>
       </div>
