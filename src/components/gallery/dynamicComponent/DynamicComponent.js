@@ -1,5 +1,4 @@
 import React from 'react';
-import { AttributeText, AttributeSelect, AttributeMixed } from './ComponentAttributes'
 
 import './DC.scss';
 
@@ -14,45 +13,58 @@ class DynamicComponent extends React.Component {
       isCollapsed: true
     }
 
-    this.handleChange = this.handleChange.bind(this)
+    this.handleChange = this.props.handleChange.bind(this)
     this.toggleCollapsed = this.toggleCollapsed.bind(this)
-  }
-
-  handleChange(event) {
-    const { name, value, type, checked } = event.target
-
-    type === "checkbox" ? this.setState({ [name]: checked }) : this.setState({ [name]: value })
   }
 
   toggleCollapsed() {
     this.setState({ isCollapsed: !this.state.isCollapsed })
   }
 
-  render() {
-    if (this.state.componentAttributes.length === 0) return
-
-    return (
-      <div>
-        <button onClick={this.toggleCollapsed} className='twistie'>{this.state.isCollapsed ? '<+>' : '<->'}</button><span> {this.state.componentLabel}</span>
-        {(!this.state.isCollapsed) &&
-          <div>
-            {
-              this.state.componentAttributes.map((attribute) => {
-                const attributeType = attribute.fieldType
-
-                switch (attributeType) {
-                  case 'AttributeText': return <div><AttributeText data={attribute} changeHandler={this.handleChange} /><br /></div>
-                  case 'AttributeSelect': return <div><AttributeSelect data={attribute} changeHandler={this.handleChange} /><br /></div>
-                  case 'AttributeMixed': return <div><AttributeMixed data={attribute} changeHandler={this.handleChange} /><br /></div>
-                  default: return null
-                }
-              })
-            }
-          </div>
+  render = () =>
+    ((this.state.componentAttributes.length === 0) ? null :
+      <div className='dcc--container' >
+        <div className='dcc--twistie'>
+          <button onClick={this.toggleCollapsed}>{this.state.isCollapsed ? '<+>' : '<->'}</button>
+        </div>
+        <div className='dcc--name'>
+          {this.state.componentLabel}
+        </div>
+        <div></div>
+        {
+          (
+            this.state.isCollapsed ? null :
+              (
+                this.state.componentAttributes.forEach((attribute) =>
+                  (
+                    < div className='dcc--label' > {attribute.fieldLabel}: </div> +
+                    ((attribute.fieldType === 'AttributeText') &&
+                      (attribute.fieldType === 'AttributeMixed') ? <div className='dcc--data'></div> :
+                      <div className='dcc--data'>
+                        <input
+                          type='text'
+                          id={attribute.fieldID}
+                          name={attribute.fieldName + '-' + attribute.fieldID}
+                          value={attribute.fieldValue}
+                          length={attribute.fieldLength}
+                          onChange={this.changeHandler}
+                        />
+                        {
+                          ((attribute.fieldType !== 'AttributeMixed') ? null :
+                            <select onChange={this.changeHandler} value={attribute.fieldValue}>
+                              {attribute.fieldOptions.length > 0 && attribute.fieldOptions.map(option => <option value={option}>{option}</option>)}
+                            </select>
+                          )
+                        }
+                      </div>
+                    )
+                  )
+                )
+              )
+          )
         }
-      </div>
+      </div >
     )
-  }
 }
 
 export default DynamicComponent

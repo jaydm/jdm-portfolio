@@ -1,3 +1,33 @@
-.twistie {
-  width: 5em;
+.dcc--container {
+  display: grid;
+  grid-template-columns: 4em auto;
+
+  background-color: grey;
+}
+
+.dcc--attribute--container {
+  display: grid;
+}
+
+.dcc--twistie {
+  display: grid;
+  grid-area: "twistie";
+
+  justify-self: start;
+
+  button {
+    width: 3em;
+  }
+}
+
+.dcc--name {
+  grid-area: "name";
+}
+
+.dcc--label {
+  grid-area: "label";
+}
+
+.dcc--data {
+  grid-area: "data";
 }

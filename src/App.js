@@ -6,9 +6,7 @@ import Header from './components/site/Header';
 import Menu from './components/site/Menu';
 import Attribution from './components/site/Attribution';
 
-import DynamicComponent from './components/gallery/dynamicComponent/DynamicComponent'
-import dataFormat from './components/gallery/dynamicComponent/dataFormat'
-import JSONPlayground from './components/gallery/dynamicComponent/JSONPlayground';
+import DynamicComponentWrapper from './components/gallery/DynamicComponentWrapper';
 
 class App extends Component {
   render() {
@@ -21,8 +19,7 @@ class App extends Component {
             <Attribution />
           </div>
           <div id='substance'>
-            <JSONPlayground name='example' json={JSON.stringify(dataFormat)} />
-            <DynamicComponent dataFormat={dataFormat} />
+            <DynamicComponentWrapper />
           </div>
         </div>
       </div>
