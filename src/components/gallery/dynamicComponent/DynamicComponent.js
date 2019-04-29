@@ -63,9 +63,12 @@ function AttributeEmpty() {
 }
 
 function ComponentAttributes(props) {
-  if (props.isCollapsed) return null
+  console.log('Entering componentAttributes function...')
+  console.log(props)
 
-  return props.componentAttributes.map((attribute) => {
+  if (props.data.isCollapsed) return null
+
+  return props.data.componentAttributes.map((attribute) => {
     switch (attribute.fieldType) {
       case 'AttributeText':
         return <AttributeText data={attribute} />
@@ -83,6 +86,11 @@ class DynamicComponent extends React.Component {
   constructor(props) {
     super(props)
 
+    console.log('Constructor props...')
+    console.log(props)
+
+    console.log('Number of attributes: ' + props.dataFormat.componentAttributes.length)
+
     this.state = {
       componentClass: props.dataFormat.componentClass,
       componentLabel: props.dataFormat.componentLabel,
@@ -90,6 +98,7 @@ class DynamicComponent extends React.Component {
       isCollapsed: false
     }
 
+    console.log('Number of attributes saved: ' + this.state.componentAttributes.length);
     this.handleChange = this.props.handleChange.bind(this)
     this.toggleCollapsed = this.toggleCollapsed.bind(this)
   }
@@ -98,8 +107,12 @@ class DynamicComponent extends React.Component {
     this.setState({ isCollapsed: !this.state.isCollapsed })
   }
 
-  render = () => {
-    if (this.state.componentAttributes.length !== 0) return null
+  render() {
+    console.log('Entering render method...')
+
+    if (this.state.componentAttributes.length === 0) return null
+
+    console.log('There are attributes to print...')
 
     return (
       <div className='dcc--container' >
