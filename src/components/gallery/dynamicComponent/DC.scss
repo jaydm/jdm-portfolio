@@ -1,33 +1,52 @@
 .dcc--container {
   display: grid;
-  grid-template-columns: 4em auto;
-
-  background-color: grey;
-}
-
-.dcc--attribute--container {
-  display: grid;
+  width: 100%;
+  grid-template-columns: auto 2fr 3fr;
+  grid-template-areas:
+    "twistie name ."
+    ". label data"
+    ". label data"
+    ". label data"
+    ". label data"
+    ". label data"
+    ". label data"
+    ". label data"
+    ". label data"
+    ". label data"
+    ". label data"
+    ". label data"
+    ". label data"
+    ". label data"
+    ". label data"
+    ". label data"
+    ". label data"
+    ". label data";
 }
 
 .dcc--twistie {
-  display: grid;
   grid-area: "twistie";
 
   justify-self: start;
 
   button {
-    width: 3em;
+    width: 3.5em;
   }
 }
 
 .dcc--name {
   grid-area: "name";
+  grid-column: 2 / 4;
+  font-size: 1.3em;
+  margin-left: 5px;
 }
 
 .dcc--label {
   grid-area: "label";
+  margin-left: 5px;
 }
 
 .dcc--data {
   grid-area: "data";
+  display: flex;
+  flex-direction: column;
 }

@@ -2,30 +2,30 @@ import React from 'react';
 
 import './gallery.scss';
 
-import dataFormat from './dynamicComponent/dataFormat'
+import dataFormat1 from './dynamicComponent/dataFormat1'
+import dataFormat2 from './dynamicComponent/dataFormat2'
+
 import DynamicComponent from './dynamicComponent/DynamicComponent';
 
 class DynamicComponentWrapper extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleChange = this.handleChange.bind(this)
-  }
-
-  handleChange(event) {
-    const { name, value, type, checked } = event.target
-
-    type === "checkbox" ? this.setState({ [name]: checked }) : this.setState({ [name]: value })
+    this.state = {
+      dataFormat1: dataFormat1,
+      dataFormat2: dataFormat2
+    }
   }
 
   render() {
     return (
       <div className='gallery--container'>
         <div className='gallery--backup'>
-          <h1>The data supporting the component will display here</h1>
+          <textarea value={JSON.stringify(this.state.dataFormat, undefined, 2)}></textarea>
         </div>
         <div className='gallery--show'>
-          <DynamicComponent dataFormat={dataFormat} handleChange={this.handleChange} />
+          <DynamicComponent dataFormat={this.state.dataFormat1} />
+          <DynamicComponent dataFormat={this.state.dataFormat2} />
         </div>
       </div>
     )
