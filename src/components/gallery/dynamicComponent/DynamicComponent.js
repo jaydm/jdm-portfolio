@@ -3,63 +3,42 @@ import React from 'react';
 import './DC.scss';
 
 function AttributeText(props) {
-  const data = props.data
-  const componentName = props.cname
-  const attributeIndex = props.ndx
-
-  const textName = componentName + '.' + attributeIndex + '.input'
-
-  const onChange = props.onChange
-
-  console.log(data)
-  console.log(componentName)
-  console.log(attributeIndex)
-  console.log(textName)
-
   return (
     <React.Fragment>
       <div></div>
-      <div className='dcc--label'>{data.label}:</div>
+      <div className='dcc--label'>{props.data.label}:</div>
       <div className='dcc--data'>
         <input
           type='text'
-          id={textName}
-          data_attribute_index={attributeIndex}
+          id={props.cname + '.' + props.ndx + '.input'}
+          data_attribute_index={props.ndx}
           data_attribute_type='text'
-          value={data.value}
-          length={data.len}
-          onChange={onChange} />
+          value={props.data.value}
+          length={props.data.len}
+          onChange={props.onChange} />
       </div>
     </React.Fragment>
   )
 }
 
 function SelectOption(selectOption, index) {
-  return <option value={selectOption} key={index}></option>
+  return <option value={selectOption} key={index}>{selectOption}</option>
 }
 
 function AttributeSelect(props) {
-  const data = props.data
-  const componentName = props.cname
-  const attributeIndex = props.ndx
-
-  const selectName = componentName + '.' + attributeIndex + '.select'
-
-  const onChange = props.onChange
-
-  console.log(data)
-  console.log(componentName)
-  console.log(attributeIndex)
-  console.log(selectName)
-
   return (
     <React.Fragment>
       <div></div>
-      <div className='dcc--label'>{data.label}:</div>
+      <div className='dcc--label'>{props.data.label}:</div>
       <div className='dcc--data'>
-        {(data.options.length === 0 ? null :
-          <select value={data.value} data_attribute_index={attributeIndex} data_attribute_type='text' onChange={onChange}>
-            {data.options.map((selectOption, index) => SelectOption(selectOption, index))}
+        {(props.data.options.length === 0 ? null :
+          <select
+            id={props.cname + '.' + props.data.sequence + '.select'}
+            value={props.data.value}
+            data_attribute_index={props.data.sequence}
+            data_attribute_type='text'
+            onChange={props.onChange}>
+            {props.data.options.map((selectOption, index) => SelectOption(selectOption, index))}
           </select>
         )}
       </div>
@@ -69,37 +48,27 @@ function AttributeSelect(props) {
 
 // this function receives an attribute
 function AttributeMixed(props) {
-  const data = props.data
-  const componentName = props.cname
-  const attributeIndex = data.sequence
-
-  const textName = componentName + '.' + attributeIndex + '.input'
-  const selectName = componentName + '.' + attributeIndex + '.select'
-
-  const onChange = props.onChange
-
-  console.log(data)
-  console.log(componentName)
-  console.log(attributeIndex)
-  console.log(textName)
-  console.log(selectName)
-
   return (
     <React.Fragment>
       <div></div>
-      <div className='dcc--label'>{data.label}:</div>
+      <div className='dcc--label'>{props.data.label}:</div>
       <div className='dcc--data'>
         <input
           type='text'
-          id={textName}
-          data_attribute_index={attributeIndex}
+          id={props.cname + '.' + props.data.sequence + '.input'}
+          data_attribute_index={props.data.sequence}
           data_attribute_type='text'
-          value={data.value}
-          length={data.len}
-          onChange={onChange} />
-        {(data.options.length === 0 ? null :
-          <select value={data.value} data_attribute_index={attributeIndex} data_attribute_type='select' onChange={onChange}>
-            {data.options.map((selectOption, index) => SelectOption(selectOption, index))}
+          value={props.data.value}
+          length={props.data.len}
+          onChange={props.onChange} />
+        {(props.data.options.length === 0 ? null :
+          <select
+            id={props.cname + '.' + props.data.sequence + '.select'}
+            value={props.data.value}
+            data_attribute_index={props.data.sequence}
+            data_attribute_type='select'
+            onChange={props.onChange}>
+            {props.data.options.map((selectOption, index) => SelectOption(selectOption, index))}
           </select>
         )}
       </div>
@@ -117,7 +86,7 @@ function AttributeEmpty() {
   )
 }
 
-function Attribute(componentName, attribute, onChange) {
+function Attributes(componentName, attribute, onChange) {
   switch (attribute.type) {
     case 'AttributeText':
       return <AttributeText cname={componentName} data={attribute} onChange={onChange} />
@@ -137,7 +106,7 @@ function ComponentAttributes(props) {
   const data = props.data
   const componentName = `${data.class.name}.${data.componentID}`
 
-  return data.attributes.map(attribute => Attribute(componentName, attribute, props.onChange))
+  return data.attributes.map(attribute => Attributes(componentName, attribute, props.onChange))
 }
 
 class DynamicComponent extends React.Component {
@@ -159,18 +128,9 @@ class DynamicComponent extends React.Component {
   }
 
   handleChange(event) {
-    console.log(event)
-    console.log(event.target)
-
     const data_attribute_index = event.target.attributes.getNamedItem('data_attribute_index').value - 1
-    const data_attribute_type = event.target.attributes.getNamedItem('data_attribute_type').value
+    // const data_attribute_type = event.target.attributes.getNamedItem('data_attribute_type').value
     const newValue = event.target.value
-
-    console.log('Handling changes...')
-    console.log('Attribute Index: ' + data_attribute_index)
-    console.log('Attribute Type: ' + data_attribute_type)
-
-    console.table(this.state)
 
     let newState = this.state;
 
@@ -180,6 +140,9 @@ class DynamicComponent extends React.Component {
   }
 
   toggleCollapsed() {
+    console.log('toggling...')
+    console.log(this.state)
+
     this.setState({ isCollapsed: !this.state.isCollapsed })
   }
 

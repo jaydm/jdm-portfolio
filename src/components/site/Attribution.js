@@ -13,6 +13,7 @@ function Attribution(props) {
       </div>
       <p>Well written code is poetry which captures the desires of the user through the expression of the developer.</p>
       <p>Copyright 2019 Jay D. McHugh</p>
+      <img src='https://www.codewars.com/users/jaydm/badges/micro' alt='CodeWars rank' />
     </div>
   );
 }

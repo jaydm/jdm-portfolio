@@ -21,11 +21,10 @@ class DynamicComponentWrapper extends React.Component {
     return (
       <div className='gallery--container'>
         <div className='gallery--backup'>
-          <textarea value={JSON.stringify(this.state.dataFormat, undefined, 2)}></textarea>
+          <textarea value={JSON.stringify(this.state.dataFormat1, undefined, 2)}></textarea>
         </div>
         <div className='gallery--show'>
           <DynamicComponent dataFormat={this.state.dataFormat1} />
-          <DynamicComponent dataFormat={this.state.dataFormat2} />
         </div>
       </div>
     )
