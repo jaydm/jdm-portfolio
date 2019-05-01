@@ -129,7 +129,6 @@ class DynamicComponent extends React.Component {
 
   handleChange(event) {
     const data_attribute_index = event.target.attributes.getNamedItem('data_attribute_index').value - 1
-    // const data_attribute_type = event.target.attributes.getNamedItem('data_attribute_type').value
     const newValue = event.target.value
 
     let newState = this.state;
@@ -140,9 +139,6 @@ class DynamicComponent extends React.Component {
   }
 
   toggleCollapsed() {
-    console.log('toggling...')
-    console.log(this.state)
-
     this.setState({ isCollapsed: !this.state.isCollapsed })
   }
 
@@ -150,13 +146,13 @@ class DynamicComponent extends React.Component {
     if (this.state.attributes.length === 0) return null
 
     return (
-      <div className='dcc--container' >
-        <div className='dcc--twistie'>
-          <button onClick={this.toggleCollapsed}>{this.state.isCollapsed ? '<+>' : '<->'}</button>
+      <details>
+        <summary>{this.state.label}
+        </summary>
+        <div className='dcc--container' >
+          <ComponentAttributes data={this.state} onChange={this.handleChange} />
         </div>
-        <div className='dcc--name'>{this.state.label}</div>
-        <ComponentAttributes data={this.state} onChange={this.handleChange} />
-      </div>
+      </details>
     )
   }
 }
